@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --font-1: "Noto Serif", serif;
+    --font-2: "Inter", sans-serif;
+}
+
+body {
+    background-color: rgba(255, 248, 246, 1);
+    overflow-x: hidden;
+}
+
+.body-text {
+    font-family: var(--font-1);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 27px;
+    text-align: justify;
+    color: #000;
+}
+
+.questions {
+    font-family: var(--font-2);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 27px;
+    text-align: justify;
+    color: #000;
+}
+
+img {
+    width: 100%;
+}
+
+/* ----------main--------- */
+.main {
+    width: 100%;
+}
+
+.sc-1 {
+    width: 100%;
+    position: relative;
+}
+
+.imgbg-1 {
+    width: 62.45%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: slideDownAndFade 2s ease-in-out forwards;
+}
+
+@keyframes slideDownAndFade {
+    0% {
+        transform: translateY(-15%);
+        /* Bắt đầu từ trên cùng (ngoài viewport) */
+        opacity: 1;
+        /* Hiển thị hoàn toàn */
+    }
+
+    50% {
+        transform: translateY(0);
+        /* Trượt xuống vị trí ban đầu */
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(0);
+        /* Giữ vị trí */
+        opacity: 0;
+        /* Mờ dần và biến mất */
+    }
+}
+
+.imgbg-2 {
+    width: 37.7%;
+    position: absolute;
+    bottom: 0.25%;
+    right: 0;
+
+}
+
+@keyframes slideLeftAndFade {
+    0% {
+        transform: translateX(10%);
+        /* Bắt đầu từ bên phải, cách 20% */
+        opacity: 1;
+        /* Hiển thị hoàn toàn */
+    }
+
+    50% {
+        transform: translateX(0);
+        /* Trượt về vị trí ban đầu */
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(0);
+        /* Giữ vị trí */
+        opacity: 0;
+        /* Mờ dần và biến mất */
+    }
+}
+
+.sc-2 {
+    width: 100%;
+    padding-top: 2%;
+}
+
+.sc-2 p {
+    width: 100%;
+    max-width: 720px;
+    margin: 2% auto 0;
+}
+
+.sc-3 {
+    width: 100%;
+    max-width: 720px;
+    padding-top: 2%;
+    margin: 2% auto 0;
+    position: relative;
+}
+
+.bg-quote-1 {
+    position: absolute;
+    left: 0;
+    top: 5.3%;
+    width: 87.5%;
+    object-fit: fill;
+}
+
+.bg-quote-2 {
+    position: absolute;
+    left: 0;
+    bottom: 3.5%;
+    width: 100%;
+    object-fit: fill;
+}
+
+.bg-quote-3 {
+    position: absolute;
+    left: 0;
+    bottom: 3.5%;
+    width: 87.5%;
+    object-fit: fill;
+}
+
+.bg-quote-4 {
+    position: absolute;
+    left: 0;
+    top: 5.4%;
+    width: 87.5%;
+    object-fit: fill;
+}
+
+.questions,
+.body-text,
+.quote,
+.imgbg-1,
+.imgbg-2,
+.footer-img,
+.img-open,
+.bg-quote-1,
+.bg-quote-2,
+.bg-quote-3,
+.bg-quote-4 {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: opacity, transform;
+}
+
+.questions.visible,
+.body-text.visible,
+.quote.visible,
+.imgbg-1.visible,
+.imgbg-2.visible,
+.footer-img.visible,
+.img-open.visible,
+.bg-quote-1.visible,
+.bg-quote-2.visible,
+.bg-quote-3.visible,
+.bg-quote-4.visible {
+    opacity: 1;
+    transform: translateX(0px);
+}
+
+.imgbg-2.visible,
+.bg-quote-1.visible,
+.bg-quote-2.visible,
+.bg-quote-3.visible,
+.bg-quote-4.visible {
+    animation: slideLeftAndFade 1.5s ease-in-out forwards;
+}
+
+/* responsive */
+/* @media screen and (max-width: 990px) {
+    
+    .sc-2 p {
+        width: 80%;
+    }
+
+    .sc-3 {
+        width: 80%;
+    }
+
+    .bg-quote-1, .bg-quote-3 {
+        top: 5%;
+    }
+} */
+
+@media screen and (max-width: 767px) {
+
+
+    .sc-2 p {
+        width: 100%;
+        padding: 0 15px;
+        margin: 4% auto 0;
+        text-align: justify;
+    }
+
+    .sc-3 {
+        width: 100%;
+        margin: 6% auto 0;
+    }
+
+    .imgbg-2 {
+        bottom: 0.7%;
+    }
+
+    .bg-quote-1,
+    .bg-quote-4 {
+        top: 4.5%;
+    }
+
+    .bg-quote-3 {
+        bottom: 3.5%;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .bg-quote-3 {
+        bottom: 3.9%;
+    }
+
+    .imgbg-2 {
+        bottom: 1.4%;
+    }
+}
