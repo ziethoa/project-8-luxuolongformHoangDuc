@@ -225,18 +225,25 @@
         });
     </script>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const slideElements = document.querySelectorAll('.questions, .body-text, .quote, .imgbg-1, .imgbg-2, .footer-img, .img-open ,.bg-quote-1, .bg-quote-2, .bg-quote-3, .bg-quote-4');
+       document.addEventListener('DOMContentLoaded', () => {
+            const slideElements = document.querySelectorAll('.questions, .body-text, .quote, .imgbg-1, .imgbg-2, .footer-img, .img-open, .bg-quote-1, .bg-quote-2, .bg-quote-3, .bg-quote-4');
             const slideObserver = new IntersectionObserver((entries) => {
                 entries.forEach((entry, index) => {
                     if (entry.isIntersecting) {
                         setTimeout(() => {
                             entry.target.classList.add('visible');
+                            // Ngừng quan sát cho .questions và .body-text sau khi xuất hiện
+                            if (entry.target.classList.contains('questions') || entry.target.classList.contains('body-text')) {
+                                slideObserver.unobserve(entry.target);
+                            }
                         }, index * 200); // Delay để tạo hiệu ứng lần lượt
                     } else {
-                        setTimeout(() => {
-                            entry.target.classList.remove('visible');
-                        }, index * 100); // Delay nhẹ khi ẩn
+                        // Chỉ xóa lớp visible cho các phần tử không phải .questions và .body-text
+                        if (!entry.target.classList.contains('questions') && !entry.target.classList.contains('body-text')) {
+                            setTimeout(() => {
+                                entry.target.classList.remove('visible');
+                            }, index * 100); // Delay nhẹ khi ẩn
+                        }
                     }
                 });
             }, {
